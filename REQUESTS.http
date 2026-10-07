@@ -1,0 +1,27 @@
+@host = localhost:8080
+@token = super-secret-token
+
+### Testar se o servidor está de boas
+GET /health HTTP/1.1
+Host: {{host}}
+Accept: text/plain
+Authorization: Bearer {{token}}
+
+### New dev
+POST /bilhete/create HTTP/1.1
+Host: {{host}}
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "texto":    "Oi, Anthony :D",
+  "acessos":  "1",
+  "tempo":    "0"
+}
+
+### List devs novamente esse :id pode estar errado
+GET /bilhete/:id HTTP/1.1
+Host: {{host}}
+Accept: application/json
+Authorization: Bearer {{token}}
